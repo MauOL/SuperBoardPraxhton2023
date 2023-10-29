@@ -1,0 +1,31 @@
+{% load static %}
+<div class="col-sm-12 col-md-12">
+    <table class="table table-responsive table-striped table-bordered">
+        <tr style="height:100px;">
+            <td>
+                <h5><span class="boldText">Total de puntos Actividades:</span> {{ totalPuntosActs }}</h5>
+                <h5><span class="boldText">Total de puntos Bonus:</span> {{ totalPuntosBonus }}</h5>
+                <h5><span class="boldText">Total de puntos:</span> {{ totalPuntos }}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img id="advanceAvatar" src="{% static nombreFoto %}" class="thumbnail" alt="..." width="120px">
+            </td>
+        </tr>
+        <tr style="height:100px;">
+            <td>
+                <!--
+                <h6><span class="boldText">valorX:</span> {{ valorX }}</h6>
+                <h6><span class="boldText">Total de puntos Actividades Ant:</span> {{ totalPuntosActsAnt }}</h6>
+                <h6><span class="boldText">Total de puntos Bonus Ant:</span> {{ totalPuntosBonusAnt }}</h6>
+                <h6><span class="boldText">Total de puntos Ant:</span> {{ totalPuntosAnt }}</h6>
+                -->
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $('#advanceAvatar').transition({ x: '{{ valorX }}px' });
+</script>

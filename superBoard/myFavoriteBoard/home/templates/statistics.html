@@ -1,0 +1,51 @@
+{% load static %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h4>Reporte de actividades en Semáforo Verde</h4>
+
+            <hr></hr>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="fechaInicial">Fecha Inicial:</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <label for="fechaFinal">Fecha Final:</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning" onclick="showGreenActivitiesReport('greenActivities');">
+                        Consultar
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row" id="rowAdvance">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row" id="greenActivities">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#fechaInicial, #fechaFinal").val( today() );
+</script>

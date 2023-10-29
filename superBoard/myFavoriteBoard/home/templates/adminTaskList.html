@@ -1,0 +1,36 @@
+{% load static %}
+
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+      <div class="row">
+          <div class="col-sm-2 col-md-2">
+              <label for="consultor" class="boldText">Consultor(a):</label>
+          </div>
+          <div class="col-sm-3 col-md-3">
+              <select id="consultor" name="consultor" class="form-control" onchange="fillNewActivityModal(); showTaskList();">
+                  <option value="00-00" selected>Seleccione ... </option>
+                  {% for c in consultorList %}
+                    <option value="{{ c.id }}-{{ c.clave }}">{{ c.nombre }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+          <div class="col-sm-1 col-md-1"></div>
+          <div class="col-sm-2 col-md-2">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Actividad Individual &nbsp; <i class="bi bi-person-video"></i>
+            </button>
+          </div>
+          <div class="col-sm-2 col-md-2">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modSendBonus">
+                  Enviar Bonus &nbsp; <i class="bi bi-star-fill"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<hr></hr>
+
+{% include "taskList.html" %}

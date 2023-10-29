@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div id="chartContainer" style="height: 300px; width: 100%;">
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var array = []
+    '{% for line in listActsEnVerde %}'
+        array.push( '{{ line }}' )
+    '{% endfor %}'
+
+    for (let i = 0; i < array.length; i++) {
+        parts = array[i].split("-");
+        nombre = parts[1];
+        counter = parseInt(parts[2]);
+        $("#chartContainer").append(
+            "<div class='row'>" + 
+            "    <p>Consultor(a): <span class='boldText'>" + nombre + "</span></p>" +
+            "</div>" + 
+            "<div class='progress'>" +
+            "    <div class='progress-bar progress-bar-striped bg-success boldText' role='progressbar' style='width: " + (counter+1)*20 + "%' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100'>" + counter + " Actividades</div>" + 
+            "</div><br></br>"
+        );
+    }
+</script>

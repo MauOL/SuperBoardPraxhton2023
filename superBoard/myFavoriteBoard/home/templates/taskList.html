@@ -1,0 +1,87 @@
+{% load static %}
+
+<div class="row justify-content-center align-items-center" id="divTaskList">
+    <div class="col-sm-11 col-md-11">
+      <table class="table table-responsive table-bordered">
+          <tr style="text-align:center;">
+              <th style="width: 33%;">Asignada</th>
+              <th style="width: 33%;">En Progreso</th>
+              <th style="width: 33%;">Concluida</th>
+          </tr>
+          <tr>
+              <td class="table-info" style="height: 600px; min-height: 400px;">
+                <!-- Iteracion for each -->
+                {% for a in asignadas %}
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="card activityCard" style="width: 19rem; border-color: lightskyblue !important;">
+                            <!-- <img class="card-img-top" src="..." alt=""> -->
+                            <div class="card-body">
+                              <h5 class="card-title">{{ a.proyecto }} - {{ a.fecha_entrega }}</h5>
+                              <p class="card-text">{{ a.descrip }}</p>
+                              <p class="card-text">{{ a.valor }} Puntos</p>
+
+                              {% if tipoRequest == "03" %}
+                                  <button type="button" class="btn btn-success" onclick="updateStatusActivity('{{ a.id }}', 2);">
+                                      Avanzar
+                                  </button>
+                              {% endif %}
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </td>
+              <td class="table-warning" style="height: 600px; min-height: 400px;">
+                <!--Iteracion forEach -->
+                {% for p in enProgreso %}
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="card activityCard" style="width: 19rem; border-color:orange !important;">
+                            <!-- <img class="card-img-top" src="..." alt=""> -->
+                            <div class="card-body">
+                              <h5 class="card-title">{{ p.proyecto }} - {{ p.fecha_entrega }}</h5>
+                              <p class="card-text">{{ p.descrip }}</p>
+                              <p class="card-text">{{ p.valor }} Puntos</p>
+
+                              {% if tipoRequest == "03" %}
+                                  <button type="button" class="btn btn-warning" onclick="updateStatusActivity('{{ p.id }}', 1);">
+                                      Regresar
+                                  </button>
+                                  <button type="button" class="btn btn-success" onclick="updateStatusActivity('{{ p.id }}', 3);">
+                                      Avanzar
+                                  </button>
+                              {% endif %}
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </td>
+              <td class="table-success" style="height: 600px; min-height: 400px;">
+                <!--Iteracion forEach -->
+                {% for c in concluidas %}
+                  <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="card activityCard" style="width: 19rem; border-color:greenyellow !important;">
+                            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                            <div class="card-body">
+                              <h5 class="card-title">{{ c.proyecto }} - {{ c.fecha_entrega }}</h5>
+                              <p class="card-text">{{ c.descrip }}</p>
+                              <p class="card-text">{{ c.valor }} Puntos</p>
+
+                              {% if tipoRequest == "03" %}
+                                  <button type="button" class="btn btn-warning" onclick="updateStatusActivity('{{ c.id }}', 2);">
+                                      Regresar
+                                  </button>
+                              {% endif %}
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </td>
+          </tr>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,136 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+        <h4>Asignación de actividades por bloque</h4>
+    </div>
+
+    <hr></hr>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-md-8">
+        <table class="table table-responsive table-striped table-hover table-bordered" style="margin-top: 15px;">
+            <tr>
+                <th>Clave</th>
+                <th>Nombre Consultor</th>
+                <th>Area</th>
+                <th>
+                    Marcar <br>
+                    <input type="checkbox" name="globalCheck" id="globalCheck" onclick="checkAllBoxes('checkForActivity', 'globalCheck')" class="form-check-input">
+                </th>
+            </tr>
+        
+            {% for c in consultorList %}
+              <tr>
+                  <td>{{ c.clave }}</td>
+                  <td>{{ c.nombre }}</td>
+                  <td>{{ c.area }}</td>
+                  <td>
+                    <input type="checkbox" name="checkForActivity" id="checkForActivity{{c.id}}" value="{{c.id}}" class="form-check-input">
+                  </td>
+              </tr>
+            {% endfor %}
+        </table>
+      </div>
+
+      <div class="col-sm-4 col-md-4">
+       <div class="card shadow">
+        <div class="card-body">
+        <form role="form" id="formActivitiesBlock">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="actividadB" class="boldText">Actividad*:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="actividadB" name="actividadB" class="form-control">
+                    <input type="hidden" id="categoriaB" name="categoriaB" value="">
+                    <input type="hidden" id="estatusB" name="estatusB" value="1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="proyectoB" class="boldText">Proyecto*:</label>
+                </div>
+                <div class="col-md-6">
+                    <select id="proyectoB" name="proyectoB" class="form-control">
+                        <option value="000" selected>Seleccione ...</option>
+                        <option value="Soporte Banamex">Tickets Santander</option>
+                        <option value="Soporte Banamex">Soporte Banamex</option>
+                        <option value="Testing BAGO">Testing BAGO</option>
+                        <option value="SM/AS">SM/AS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="valorB" class="boldText">Valor (Puntos):</label>
+                </div>
+                <div class="col-md-6">
+                    <select id="valorB" name="valorB" class="form-control">
+                        <option value="100">100</option>
+                        <option value="100">120</option>
+                        <option value="100">130</option>
+                        <option value="100">150</option>
+                        <option value="200">200</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="notasB" class="boldText">Notas:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea id="notasB" name="notasB" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+            <br></br>
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="fechaAsignacionB">Asignación:</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <label for="fechaEntregaB">Entrega*:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="date" id="fechaAsignacionB" name="fechaAsignacionB" class="form-control">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <input type="date" id="fechaEntregaB" name="fechaEntregaB" class="form-control">
+                </div>
+            </div>
+
+            <hr></hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" onclick="cleanComponents();">Limpiar</button>
+                    <button type="button" class="btn btn-danger" onclick="saveActivityBlock();">Cargar Actividades</button>
+                </div>
+            </div>
+        </form>
+       </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var currentDate = today();
+    $("#fechaAsignacionB, #fechaEntregaB").val( currentDate );
+    $("#fechaAsignacionB").prop("min", currentDate);
+    $("#fechaEntregaB").prop("min", currentDate);
+
+    function cleanComponents() {
+        var currentDate = today();
+        $("#fechaAsignacionB, #fechaEntregaB").val( currentDate );
+        $("#actividadB").val("");
+        $("#proyectoB").prop('selectedIndex',0);
+        $("#valorB").prop('selectedIndex',0);
+        $("#notasB").val("");
+    }
+</script>

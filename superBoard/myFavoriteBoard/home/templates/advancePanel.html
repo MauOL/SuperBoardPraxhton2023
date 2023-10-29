@@ -1,0 +1,57 @@
+{% load static %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="fechaInicial">Fecha Inicial:</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <label for="fechaFinal">Fecha Final:</label>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success" onclick="consultAdvance('rowAdvance', '{{ nombreFoto }}');"
+                        style="border-radius: 7px !important;">
+                        <i class="bi bi-arrow-clockwise"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" id="rowAdvance">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-responsive table-striped table-bordered">
+                        <tr style="height:100px;">
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img id="advanceAvatar" src="{% static nombreFoto %}" class="thumbnail" alt="..." width="120px">
+                            </td>
+                        </tr>
+                        <tr style="height:100px;">
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#fechaInicial, #fechaFinal").val( today() );
+</script>
